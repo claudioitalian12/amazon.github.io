@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Amazon Registration</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+<style>
+body{margin-top:20px;}
+
+.login-container {
+    position: relative;
+    margin: 3% auto;
+    max-width: 350px;
+}
+
+.login-container .loginbox {
+    position: relative;
+    width: 350px !important;
+    height: auto !important;
+    padding: 0 0 20px 0;
+   border: 1px solid grey;
+}
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.login-container .loginbox .loginbox-title {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    padding-top: 10px;
+    font-family: 'Lucida Sans','trebuchet MS',Arial,Helvetica;
+    font-size: 20px;
+    font-weight: normal;
+    color: #444;
+}
+
+.login-container .loginbox .loginbox-social {
+    padding: 0 10px 10px;
+    text-align: center;
+}
+
+.login-container .loginbox .loginbox-social .social-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #a9a9a9;
+    margin-top: 10px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons {
+    height: 80px;
+    padding: 15px 35px;
+    text-align: center;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-facebook {
+    float: left;
+    border: 2px solid #3b5998;
+    color: #3b5998;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    background-color: #fff;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-twitter {
+    float: left;
+    border: 2px solid #29c1f6;
+    color: #29c1f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    background-color: #fff;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-google  {
+    float: left;
+    border: 2px solid #ef4f1d;
+    color: #ef4f1d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    background-color: #fff;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-facebook i {
+    font-size: 26px;
+    line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-twitter i {
+    font-size: 26px;
+    line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-google i {
+    font-size: 26px;
+    line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-or {
+    position: relative;
+    text-align: center;
+    height: 20px;
+}
+
+.login-container .loginbox .loginbox-or .or-line {
+    position: absolute;
+    height: 1px;
+    top: 10px;
+    left: 40px;
+    right: 40px;
+    background-color: #ccc;
+}
+
+.login-container .loginbox .loginbox-or .or {
+    position: absolute;
+    top: 0;
+    -lh-property: 0;
+    left: -webkit-calc(50% - 25px);
+    left: -moz-calc(50% - 25px);
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 20px;
+    background-color: #fff;
+    color: #999;
+    margin: 0 auto;
+}
+
+.login-container .loginbox .loginbox-textbox {
+    padding: 10px 40px;
+}
+
+.login-container .loginbox .loginbox-textbox .form-control {
+    -webkit-border-radius: 3px !important;
+    -webkit-background-clip: padding-box !important;
+    -moz-border-radius: 3px !important;
+    -moz-background-clip: padding !important;
+    border-radius: 3px !important;
+    background-clip: padding-box !important;
+}
+
+.login-container .loginbox .loginbox-forgot {
+    padding-left: 40px;
+}
+
+.login-container .loginbox .loginbox-forgot a {
+    font-size: 11px;
+    color: #666;.
+}
+
+.login-container .loginbox .loginbox-submit {
+    padding: 10px 40px;
+}
+
+.login-container .loginbox .loginbox-signup {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.login-container .loginbox .loginbox-signup a {
+    font-size: 13px;
+    color: #666;
+}
+
+.login-container .logobox {
+    width: 340px !important;
+    height: 50px !important;
+    padding: 5px;
+    margin-top: 15px;
+    -webkit-box-shadow: 0 0 14px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 14px rgba(0,0,0,.1);
+    box-shadow: 0 0 14px rgba(0,0,0,.1);
+    background-color: #fff;
+    text-align: left;
+}
+
+
+
+input:focus {
+   border: 2px solid red;
+}
+</style>
+
+<script type="text/javascript">
+function user_data(input){
+ var input = document.getElementById("mamm");
+ if(input.value=="dark.claudio12@gmail.com"){
+      var      text =  document.getElementById("password");
+           text.value = "asddddd";
+}
+else {
+        }
+}
+
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
+
+
+
+function Start() {
+var email = document.getElementById('email');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if(document.getElementById('name').value.length == 0){
+document.getElementById('error1').innerHTML = "Enter your name";
+            document.getElementById('error1').style.color = "red";
+            document.getElementById('error1').style.visibility = "visible";
+}
+else {document.getElementById('error1').style.visibility = "hidden";}
+
+
+
+if(!filter.test(email.value)){
+       document.getElementById('error2').innerHTML = "Enter a valid email address";
+            document.getElementById('error2').style.color = "red";
+  document.getElementById('error2').style.visibility = "visible"; }
+else {document.getElementById('error2').style.visibility = "hidden";}
+
+
+
+if(document.getElementById('passwordi').value.length < 6 ){ 
+document.getElementById('error3').innerHTML = "Passwords must be at least 6 characters.";
+document.getElementById('error3').style.color = "red";
+document.getElementById('error3').style.visibility = "visible";
+}
+else {document.getElementById('error3').style.visibility = "hidden";}
+
+
+if(document.getElementById('rpasswordis').value != document.getElementById('passwordi').value){
+    document.getElementById('error4').innerHTML = "Passwords must match";
+            document.getElementById('error4').style.color = "red";
+                  document.getElementById('error4').style.visibility = "visible";
+}
+else {document.getElementById('error4').style.visibility = "hidden";}
+
+
+
+
+
+if(document.getElementById('name').value.length != 0 &&  filter.test(email.value) && document.getElementById('passwordi').value.length > 5 && document.getElementById('rpasswordis').value == document.getElementById('passwordi').value){
+
+   setCookie("username",email.value + "&" + document.getElementById('passwordi').value,18);
+
+window.location.href = "login.html";}
+
+}
+
+
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+
+
+</script>
+
+  </head>
+  <body>
+
+    
+<div class="container-fluid" style="top:0;">   
+<center><img src="Logologin.PNG" class="img-responsive" alt=""></center>
+<center><div class="login-container animated fadeInDown bootstrap snippets">
+        <div class="loginbox bg-white">
+            <div class="loginbox-title" ><p style="position:absolute;left:12%;font-size:25px;"><b>Create account</b></p></div>
+            <br>
+           <div><p id="password" style="position:absolute;left:12%;"><b>Your name</b></p></div><br>
+            <div class="loginbox-textbox">
+                <input type="text" id="name"  class="form-control" placeholder="" >
+            </div>
+
+ <p style="position:absolute;left:12%;font-size:12px;" id="error1"></p><br>
+
+            <div><p id="password" style="position:absolute;left:12%;"><b>Email</b></p></div><br>
+            <div class="loginbox-textbox">
+                <input type="text" id="email"  name="testo" class="form-control" placeholder="" >
+            </div>
+
+ <p style="position:absolute;left:12%;font-size:12px;" id="error2"></p><br>
+
+         <div><p id="password" style="position:absolute;left:12%;"><b>Password</b></p></div><br>
+            <div class="loginbox-textbox">
+                <input type="password" id="passwordi"  class="form-control" placeholder="At least 6 characters" >
+            </div>
+
+ <p style="position:absolute;left:12%;font-size:12px;" id="error3">Passwords must be at least 6 characters.</p><br>
+
+         <div><p id="password" style="position:absolute;left:12%;"><b>Re-enter password</b></p></div><br>
+            <div class="loginbox-textbox">
+                <input type="password" id="rpasswordis"  class="form-control" placeholder="" >
+            </div>
+
+
+ <p style="position:absolute;left:12%;font-size:12px;" id="error4"></p> <br>     
+              
+            <div class="loginbox-submit">
+           <input type="button" class="btn btn-primary btn-block" value="Crate your Amazon account" style="background-color:#F2C85F;color:black;shadow-color:red;" onClick="Start()">
+       </div>
+            
+            
+<p style="position:absolute;left:12%;font-size:12px;">By creating an account, you agree to Amazon's</p>
+<br>
+<p style="position:absolute;left:12%;font-size:12px;"><a  href="#">Conditions of Use</a> and <a  href="#">Privacy Notice.</a></p>
+
+
+ <hr>
+<p style="position:absolute;left:12%;">
+Already have an account? <a href="login.html">Sign in</a>
+</p>
+<br>
+
+
+
+
+
+    </div>
+<br>
+
+
+
+
+ 
+</center>
+
+<hr>
+
+<center>
+
+<p style="font-size:12px;"><a href="#">Conditions of Use</a> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;<a href="#">Privacy Notice</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="#">Help</a></p>
+</div>
+
+</center>
+<center>
+<p style="font-size:12px;"> 1996-2018, Amazon.com, Inc. or its affiliates</p>
+</center>
+</div>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

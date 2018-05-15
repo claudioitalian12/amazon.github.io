@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Amazon Sing In</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+<style>
+body{margin-top:20px;}
+
+.login-container {
+    position: relative;
+    margin: 3% auto;
+    max-width: 400px;
+}
+
+.login-container .loginbox {
+    position: relative;
+    width: 400px !important;
+    height: auto !important;
+    padding: 0 0 20px 0;
+   border: 1px solid grey;
+}
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.login-container .loginbox .loginbox-title {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    padding-top: 10px;
+    font-family: 'Lucida Sans','trebuchet MS',Arial,Helvetica;
+    font-size: 20px;
+    font-weight: normal;
+    color: #444;
+}
+
+.login-container .loginbox .loginbox-social {
+    padding: 0 10px 10px;
+    text-align: center;
+}
+
+.login-container .loginbox .loginbox-social .social-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #a9a9a9;
+    margin-top: 10px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons {
+    height: 80px;
+    padding: 15px 35px;
+    text-align: center;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-facebook {
+    float: left;
+    border: 2px solid #3b5998;
+    color: #3b5998;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    background-color: #fff;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-twitter {
+    float: left;
+    border: 2px solid #29c1f6;
+    color: #29c1f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    background-color: #fff;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-google  {
+    float: left;
+    border: 2px solid #ef4f1d;
+    color: #ef4f1d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    background-color: #fff;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-facebook i {
+    font-size: 26px;
+    line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-twitter i {
+    font-size: 26px;
+    line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-google i {
+    font-size: 26px;
+    line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-or {
+    position: relative;
+    text-align: center;
+    height: 20px;
+}
+
+.login-container .loginbox .loginbox-or .or-line {
+    position: absolute;
+    height: 1px;
+    top: 10px;
+    left: 40px;
+    right: 40px;
+    background-color: #ccc;
+}
+
+.login-container .loginbox .loginbox-or .or {
+    position: absolute;
+    top: 0;
+    -lh-property: 0;
+    left: -webkit-calc(50% - 25px);
+    left: -moz-calc(50% - 25px);
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 20px;
+    background-color: #fff;
+    color: #999;
+    margin: 0 auto;
+}
+
+.login-container .loginbox .loginbox-textbox {
+    padding: 10px 40px;
+}
+
+.login-container .loginbox .loginbox-textbox .form-control {
+    -webkit-border-radius: 3px !important;
+    -webkit-background-clip: padding-box !important;
+    -moz-border-radius: 3px !important;
+    -moz-background-clip: padding !important;
+    border-radius: 3px !important;
+    background-clip: padding-box !important;
+}
+
+.login-container .loginbox .loginbox-forgot {
+    padding-left: 40px;
+}
+
+.login-container .loginbox .loginbox-forgot a {
+    font-size: 11px;
+    color: #666;
+}
+
+.login-container .loginbox .loginbox-submit {
+    padding: 10px 40px;
+}
+
+.login-container .loginbox .loginbox-signup {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.login-container .loginbox .loginbox-signup a {
+    font-size: 13px;
+    color: #666;
+}
+
+.login-container .logobox {
+    width: 340px !important;
+    height: 50px !important;
+    padding: 5px;
+    margin-top: 15px;
+    -webkit-box-shadow: 0 0 14px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 14px rgba(0,0,0,.1);
+    box-shadow: 0 0 14px rgba(0,0,0,.1);
+    background-color: #fff;
+    text-align: left;
+}
+
+
+
+input:focus {
+   border: 2px solid red;
+}
+</style>
+
+<script type="text/javascript">
+var pass = 0;
+function user_data(input){
+ var input = document.getElementById("mamm");
+ if(input.value=="dark.claudio12@gmail.com"){
+      var      text =  document.getElementById("password");
+           text.value = "asddddd";
+}
+else {
+        }
+}
+
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
+
+
+function change(text){
+  var email = document.getElementById('emails');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if(pass <1  && filter.test(email.value)  && getCookie() == email.value){
+ document.getElementById('p1').innerHTML=text;
+ document.getElementById('forgot').innerHTML="Forgot your password?";
+
+ document.getElementById('ems').innerHTML = document.getElementById('emails').value ;
+ document.getElementById('emails').value = "";
+ document.getElementById('emails').type = 'password';
+  pass = 1 ;
+
+
+  document.getElementById("conteiner").style.width = "0px";
+                    document.getElementById("conteiner").style.height = "0px";
+                    
+                      document.getElementById('invisibile').style.visibility = "hidden";
+                         document.getElementById('erroremail').innerHTML = ""; 
+                           document.getElementById('erroremailtitle').innerHTML = "";
+                             document.getElementById('savethename').style.visibility = "visible";
+                                  
+                                   document.getElementById('need').style.visibility = "hidden";
+                               document.getElementById('saveaccount').style.visibility = "visible";
+                                document.getElementById('saveaccount').innerHTML = "Keep me signed in.";
+ return 1;
+   }
+
+else if (pass<1 && (!filter.test(email.value) || getCookie() != email.value)) {
+                     
+                          document.getElementById("conteiner").style.width = "500px";
+                    document.getElementById("conteiner").style.height = "90px";
+                    
+                      document.getElementById('invisibile').style.visibility = "visible";
+                         document.getElementById('erroremail').innerHTML = "We cannot find an account with that email address"; 
+                           document.getElementById('erroremailtitle').innerHTML = "There was a problem";
+                              document.getElementById('erroremailtitle').style.color = "#C40000";  
+                              
+ return 1;                                  }
+else if (pass > 0 && getCookiepas() == email.value) {  window.location.href = "index.html";  }
+ else if(pass > 0) { 
+              
+                          document.getElementById("conteiner").style.width = "500px";
+                    document.getElementById("conteiner").style.height = "90px";
+                    
+                      document.getElementById('invisibile').style.visibility = "visible";
+                         document.getElementById('erroremail').innerHTML = "please re-enter your password and then enter the characters."; 
+                           document.getElementById('erroremailtitle').innerHTML = "Important Message!";
+                              document.getElementById('erroremailtitle').style.color = "#C40000";  
+ return  1;                              }
+}
+
+function register(){
+window.location.href = "createAccount.html";
+}
+
+
+
+function getCookie() {
+    var name = "username" + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+
+    var ca = decodedCookie.split(';');
+    
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+               var i=0;
+              while(c[i]!='&'){i = i + 1;}
+         
+            return c.substring(name.length,i);
+        }
+    } 
+ 
+    return "-1";
+}
+
+
+function getCookiepas() {
+    var name = "username" + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+               var i=0;
+              while(c[i]!='&'){i = i + 1;}
+              
+               
+            return c.substring(i + 1);
+        }
+    }
+    return "-1";
+}
+
+
+
+
+
+
+</script>
+
+  </head>
+  <body >
+
+    
+<div class="container-fluid" style="top:0;">   
+<center><img src="Logologin.PNG" class="img-responsive" alt=""></center>
+
+
+<center><div class="login-container animated fadeInDown bootstrap snippets" id="conteiner" style="width:0px;height:0px;">
+           <div class="loginbox bg-white" id="invisibile" style="border-color:#C40000;visibility:hidden;">
+            <div class="loginbox-title" ><p id="erroremailtitle" style="position:absolute;left:10%;font-size:19px;"><b></b></p></div>
+            <br>
+              <div><p id="erroremail"></p></div></div></center>
+
+<center><div class="login-container animated fadeInDown bootstrap snippets">
+        <div class="loginbox bg-white">
+            <div class="loginbox-title" ><p style="position:absolute;left:10%;font-size:25px;font-style:oblique;"><b>SIGN IN</b></p></div>
+            <br>
+        <div><p id="ems" style="position:absolute;left:10%;"></p></div><br>
+           <div><p id="p1" name="text" style="position:absolute;left:10%;"><b>Email (phone for mobile accounts)</b></p><p id="forgot" style="position:absolute;right:9%;"></p></div><br>
+            <div class="loginbox-textbox">
+                <input type="email" id="emails"  class="form-control"  >
+            </div>
+           
+        
+            <div class="loginbox-submit">
+                <input type="submit" class="btn btn-primary btn-block" value="Continue"  style="background-color:#F2C85F;color:black;shadow-color:red;" onclick="change ('<b>Password</b>')" required>
+            </div>
+            
+            
+<div class="dropdown" id="need">
+  <button type="button"  class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;position:absolute;left:0;">
+  <span class="caret"></span>  Need help?
+  </button>
+
+
+  <ul class="dropdown-menu" role="menu">
+
+    <li><a href="#">Forgot Password?</a></li>
+    <li><a href="#">Other issues with sign in</a></li>
+
+</ul>
+
+<input class="form-check-input" id="savethename" type="checkbox" value="" style="visibility:hidden;position:absolute;left:12%;">
+
+</div>
+<p id="saveaccount" style="visibility:hidden;position:absolute;left:20%;"></p>
+<br>
+
+ 
+
+
+
+
+
+
+
+    </div>
+<br>
+
+
+
+
+    <div class="loginbox bg-white" style="border-color:white;">
+  <div class="loginbox-or">
+                <div class="or-line"></div>
+                <div class="or"  ><p style="text-color:black;font-size:12px;">New to Amazon?</p></div>
+            </div>
+<div class="loginbox-submit"><br>
+                <input type="button" class="btn btn-primary btn-block" style="background-color:#F7F7F7;color:black;" value="Create   your    Amazon    Account"  onClick="register()">
+            </div>
+</div>
+
+</center>
+
+<hr>
+
+<center>
+
+<p style="font-size:10px;"><a href="#">Conditions of Use</a> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;<a href="#">Privacy Notice</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="#">Help</a></p>
+</div>
+
+</center>
+<center>
+<p style="font-size:12px;"> 1996-2018, Amazon.com, Inc. or its affiliates</p>
+</center>
+</div>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
